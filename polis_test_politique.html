@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POLIS — Test politique</title>
+<style>
+:root{--bg:#080d18;--panel:#111b2b;--line:#27364b;--text:#edf3ff;--muted:#a9b8cc;--accent:#74e0d0;--accent2:#8da7ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#182a45 0%,var(--bg) 55%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.55}button,input{font:inherit}button{cursor:pointer}.screen{min-height:100vh;padding:28px 18px;display:none}.screen.active{display:block}.wrap{width:min(1050px,100%);margin:auto}.brand{letter-spacing:.25em;font-size:.82rem;color:var(--accent);font-weight:800}.hero{min-height:calc(100vh - 56px);display:grid;place-items:center;text-align:center}.hero-inner{max-width:800px}.planet-wrap{height:290px;display:grid;place-items:center;perspective:900px;margin:10px auto 18px}.planet{width:220px;height:220px;border-radius:50%;position:relative;overflow:hidden;transform-style:preserve-3d;box-shadow:inset -35px -18px 55px #000b,inset 14px 8px 28px #b9ffff45,0 0 55px #4ba9ff35;animation:float 6s ease-in-out infinite;background:radial-gradient(circle at 28% 24%,#9df5e5 0 3%,#3f9bba 12%,#1d4d8a 45%,#101b46 72%)}.planet:before{content:"";position:absolute;inset:-10%;border-radius:50%;background:repeating-linear-gradient(8deg,transparent 0 17px,#9bf0d355 18px 21px,transparent 22px 34px),linear-gradient(105deg,transparent 25%,#9ce5b344 26% 36%,transparent 37% 47%,#c5f7e933 48% 57%,transparent 58%);animation:spin 18s linear infinite;filter:blur(1px)}.planet:after{content:"";position:absolute;inset:7%;border-radius:50%;border:1px solid #b8f8ff55;box-shadow:inset 0 0 20px #9beaff33}.orbit{position:absolute;width:310px;height:100px;border:1px solid #85e9df77;border-radius:50%;transform:rotate(-22deg);box-shadow:0 0 16px #69d9ff22}.orbit:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--accent);top:11px;left:42px;box-shadow:0 0 16px var(--accent)}@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{50%{transform:translateY(-10px) rotateY(-8deg)}}h1{font-size:clamp(2.5rem,7vw,5rem);line-height:1.02;letter-spacing:-.05em;margin:12px 0}h2{font-size:clamp(1.6rem,4vw,2.5rem);line-height:1.1}.lead{color:var(--muted);font-size:1.08rem;max-width:680px;margin:18px auto 28px}.btn{border:0;border-radius:999px;padding:13px 23px;background:var(--accent);color:#07151c;font-weight:800;box-shadow:0 8px 30px #74e0d025;transition:transform .2s,filter .2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}.btn.secondary{background:#1c2a40;color:var(--text);border:1px solid var(--line);box-shadow:none}.btnrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.panel{background:linear-gradient(145deg,#121e30f2,#0d1523f2);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,4vw,32px);box-shadow:0 18px 50px #0002}.muted{color:var(--muted)}.pill{display:inline-block;border:1px solid #34445d;border-radius:999px;padding:5px 10px;color:#c7d6e9;font-size:.82rem;margin:3px}.explain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:24px 0}.mini{background:#0c1421;border:1px solid var(--line);border-radius:16px;padding:18px}.mini h3{margin:0 0 8px}.notice{border-left:3px solid var(--accent);padding:10px 14px;background:#74e0d00d;color:#cbd8e8;border-radius:0 10px 10px 0}.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 22px}.progress-shell{height:7px;background:#1d2a3c;border-radius:99px;overflow:hidden;margin:12px 0 24px}.progress{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s}.question{padding:18px 0;border-bottom:1px solid #26354a}.question:last-child{border-bottom:0}.q-title{font-weight:700;margin:0 0 12px}.q-num{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:7px}.answers{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.answer{position:relative}.answer input{position:absolute;opacity:0;pointer-events:none}.answer span{height:100%;min-height:55px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 5px;border:1px solid #34445a;border-radius:10px;background:#0a1220;color:#c7d4e5;font-size:.86rem;line-height:1.2;cursor:pointer;transition:.15s}.answer input:checked+span{background:#173b42;border-color:var(--accent);color:#eafffb;box-shadow:inset 0 0 0 1px var(--accent)}.answer span:hover{border-color:#6b8ca8}.section-label{margin:28px 0 4px;color:var(--accent);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase}.sticky-actions{position:sticky;bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;margin-top:20px;background:#0b1422ee;backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:16px}.error{color:#ffb9b9;display:none}.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0}.axis{padding:14px 0;border-bottom:1px solid #26354a}.axis:last-child{border-bottom:0}.axis-head{display:flex;justify-content:space-between;gap:12px;font-weight:700}.axis-track{height:9px;border-radius:99px;background:#29364a;margin:10px 0;overflow:hidden;display:flex}.axis-left,.axis-mid,.axis-right{height:100%}.axis-left{background:#74e0d0}.axis-mid{background:#9baac2}.axis-right{background:#8da7ff}.axis-sub{font-size:.8rem;color:var(--muted);display:flex;justify-content:space-between;gap:8px}.score{font-variant-numeric:tabular-nums;color:var(--accent)}.flagbox{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(220px,.8fr);gap:20px;align-items:center}.flag{width:100%;border-radius:10px;border:1px solid #394960;background:#0a1220;overflow:hidden}.small{font-size:.9rem}.footer{color:#7f91a8;text-align:center;font-size:.8rem;margin:30px auto 0;max-width:750px}@media(max-width:640px){.answers{grid-template-columns:1fr}.answer span{min-height:43px;justify-content:flex-start;padding:10px 13px}.flagbox{grid-template-columns:1fr}.planet-wrap{height:245px}.planet{width:185px;height:185px}.orbit{width:260px}.topbar{align-items:flex-start}.sticky-actions{bottom:5px}.screen{padding:20px 12px}}
+</style>
+</head>
+<body>
+<section id="home" class="screen active">
+  <div class="wrap hero"><div class="hero-inner">
+    <div class="brand">POLIS / CARTOGRAPHIE DES IDÉES</div>
+    <div class="planet-wrap"><div class="orbit"></div><div class="planet" aria-label="Planète stylisée en rotation"></div></div>
+    <p class="pill">100 questions · 10 axes · résultat personnalisé</p>
+    <h1>Où te situes-tu<br><span style="color:var(--accent)">politiquement ?</span></h1>
+    <p class="lead">Explore tes idées, mesure les tensions entre tes valeurs et découvre des proximités idéologiques possibles — sans te réduire à une étiquette.</p>
+    <button class="btn" onclick="showScreen('intro')">Commencer le test <span aria-hidden="true">→</span></button>
+    <p class="footer">Un outil de réflexion, pas un diagnostic scientifique ni un vote à ta place.</p>
+  </div></div>
+</section>
+
+<section id="intro" class="screen">
+ <div class="wrap">
+  <div class="brand">POLIS / AVANT DE COMMENCER</div>
+  <h2>Comment fonctionne le test ?</h2>
+  <p class="lead" style="margin-left:0">Réponds aux 100 affirmations selon ce que tu penses réellement, pas selon ce qui te semble le plus populaire ou le plus cohérent.</p>
+  <div class="explain-grid">
+   <div class="mini"><h3>01 — Une échelle simple</h3><p class="muted">Pour chaque affirmation : totalement d’accord, d’accord, neutre, pas d’accord ou totalement pas d’accord.</p></div>
+   <div class="mini"><h3>02 — Dix axes</h3><p class="muted">Tes réponses donnent des tendances sur dix oppositions politiques et philosophiques. Certains axes ont trois pôles.</p></div>
+   <div class="mini"><h3>03 — Une lecture nuancée</h3><p class="muted">Le résultat propose des proximités possibles, des personnalités historiques et un drapeau symbolique généré à partir de tes scores.</p></div>
+  </div>
+  <div class="panel">
+   <h3>À savoir avant de répondre</h3>
+   <p class="muted">Ce questionnaire est indicatif et non validé scientifiquement. Les idées politiques sont complexes : deux personnes ayant le même score peuvent avoir des raisons très différentes. Les noms de mouvements et de personnalités seront des comparaisons partielles, jamais une équivalence morale ou historique.</p>
+   <p class="notice">Aucune réponse n’est « bonne » ou « mauvaise ». Les réponses restent dans cette page : ce fichier n’envoie rien à un serveur.</p>
+   <div class="btnrow" style="margin-top:22px"><button class="btn secondary" onclick="showScreen('home')">← Retour</button><button class="btn" onclick="startTest()">Commencer les 100 questions →</button></div>
+  </div>
+ </div>
+</section>
+
+<section id="test" class="screen">
+ <div class="wrap">
+  <div class="topbar"><div><div class="brand">POLIS / QUESTIONNAIRE</div><h2 style="margin:5px 0">Tes réponses</h2></div><span id="answeredCount" class="pill">0 / 100 répondues</span></div>
+  <p class="muted">Tu peux répondre dans n’importe quel ordre. Toutes les questions sont affichées sur cette page.</p>
+  <div class="progress-shell"><div id="progress" class="progress"></div></div>
+  <form id="quizForm"><div id="questions"></div>
+   <div class="sticky-actions"><span class="small muted">Réponses complétées : <strong id="stickyCount">0/100</strong></span><button type="button" class="btn" onclick="calculateResults()">Voir mes résultats →</button></div>
+   <p id="formError" class="error">Réponds aux 100 questions avant de calculer tes résultats.</p>
+  </form>
+ </div>
+</section>
+
+<section id="results" class="screen">
+ <div class="wrap">
+  <div class="topbar"><div><div class="brand">POLIS / TON PROFIL</div><h2 style="margin:5px 0">Ta cartographie politique</h2></div><button class="btn secondary" onclick="showScreen('test')">Modifier mes réponses</button></div>
+  <p class="lead" style="margin-left:0">Les pourcentages représentent une orientation relative dans chaque axe, calculée à partir des réponses déclarées. Ils ne mesurent ni la valeur d’une opinion ni une appartenance officielle.</p>
+  <div class="results-grid">
+   <div class="panel"><h3>Résultats par axe</h3><div id="axisResults"></div></div>
+   <div class="panel"><h3>Synthèse</h3><div id="summary"></div><p class="notice small">Les scores proches de 50 % indiquent un équilibre ou des réponses mitigées. Les questions ne couvrent pas toutes les nuances de chaque courant.</p></div>
+  </div>
+  <div class="panel" style="margin-bottom:16px"><h3>Proximités idéologiques possibles</h3><p id="movementText" class="muted"></p><div id="movements"></div><p class="small muted">Il s’agit d’analogies fondées sur quelques dimensions, pas d’une recommandation de vote ni d’une attribution automatique d’identité politique.</p></div>
+  <div class="results-grid">
+   <div class="panel"><h3>Personnalité du XXe siècle</h3><div id="person20"></div></div>
+   <div class="panel"><h3>Personnalité du XXIe siècle</h3><div id="person21"></div></div>
+  </div>
+  <div class="panel" style="margin-bottom:16px"><h3>Ton drapeau symbolique</h3><div class="flagbox"><div><svg id="flag" class="flag" viewBox="0 0 600 360" role="img" aria-label="Drapeau symbolique généré à partir des résultats"></svg><div class="btnrow" style="justify-content:flex-start;margin-top:12px"><button class="btn" onclick="downloadFlag()">Télécharger le drapeau (SVG)</button><button class="btn secondary" onclick="copySummary()">Copier la synthèse</button></div></div><div><h4>Lecture des symboles</h4><p id="flagText" class="muted small"></p><p class="small muted">Le dessin est généré à partir des tendances les plus fortes : couleurs, bandes et symbole central. C’est une création symbolique, pas l’emblème d’un parti existant.</p></div></div></div>
+  <div class="btnrow"><button class="btn secondary" onclick="showScreen('intro')">Relire les explications</button><button class="btn" onclick="restart()">Recommencer le test</button></div>
+  <p class="footer">POLIS — questionnaire personnel non scientifique. Les personnalités sont citées pour comparaison historique, sans approbation globale de leurs actes ou de leurs idées.</p>
+ </div>
+</section>
+
+<script>
+const SCALE = [
+ {label:"Totalement pas d’accord",v:-2},{label:"Pas d’accord",v:-1},{label:"Neutre",v:0},{label:"D’accord",v:1},{label:"Totalement d’accord",v:2}
+];
+const axes = [
+ {id:"war",name:"Pro-guerre / Pacifiste",left:"Pacifiste",right:"Pro-usage de la force",desc:"Préférence pour la paix, la dissuasion ou l’emploi de la force."},
+ {id:"econ",name:"Capitalisme / Communisme",left:"Communisme / propriété collective",right:"Capitalisme / propriété privée",desc:"Organisation de la propriété, de la production et de la répartition."},
+ {id:"nation",name:"Nationalisme / Globalisme",left:"Coopération globale",right:"Souveraineté nationale",desc:"Priorité accordée à la coopération internationale ou à la souveraineté."},
+ {id:"regime",name:"Totalitarisme / Démocratie / Royalisme",left:"Royalisme",right:"Démocratie",desc:"Trois pôles distincts : monarchie, démocratie pluraliste et pouvoir autoritaire concentré." ,three:true},
+ {id:"state",name:"Interventionnisme / Laissez-faire",left:"Laissez-faire",right:"Interventionnisme",desc:"Rôle de l’État dans l’économie et la société."},
+ {id:"faith",name:"Pro-théisme / Pro-athéisme",left:"Athéisme / laïcité stricte",right:"Place publique du théisme",desc:"Place de la croyance et des institutions religieuses dans la vie collective."},
+ {id:"theology",name:"Polythéisme / Monothéisme",left:"Polythéisme / pluralité divine",right:"Monothéisme",desc:"Préférence philosophique ou spirituelle, uniquement si cette question a du sens pour toi."},
+ {id:"future",name:"Futurisme / Passéisme",left:"Passéisme / héritage",right:"Futurisme / innovation",desc:"Rapport à l’innovation, à la technique et à la continuité historique."},
+ {id:"social",name:"Progressisme / Traditionalisme",left:"Traditionalisme",right:"Progressisme",desc:"Rapport aux normes sociales et à leur évolution."},
+ {id:"change",name:"Révolutionnaire / Réformisme",left:"Réformisme",right:"Révolution",desc:"Changement graduel des institutions ou rupture profonde."}
+];
+// score is oriented left -> right; reverse-coded items use rev:true.
+// Regime uses dedicated values: -2/-1 royalisme, 0 democracy, +1/+2 authoritarian centralisation; displayed as three percentages.
+const questions = [
+["La force militaire peut être nécessaire pour défendre les intérêts vitaux d’un pays.","war"],
+["Même face à une agression, la négociation devrait rester prioritaire aussi longtemps que possible.","war",true],
+["Un pays doit pouvoir employer la force pour protéger ses alliés menacés.","war"],
+["Les guerres produisent rarement une paix durable et devraient être évitées presque à tout prix.","war",true],
+["Une armée crédible est indispensable même si elle coûte cher.","war"],
+["Les interventions militaires à l’étranger causent souvent plus de problèmes qu’elles n’en résolvent.","war",true],
+["La dissuasion militaire est parfois le meilleur moyen d’empêcher une guerre.","war"],
+["Un État devrait renoncer à la guerre même si cela réduit son influence internationale.","war",true],
+["La défense d’un territoire peut justifier des sacrifices importants.","war"],
+["Les conflits devraient être arbitrés par des institutions internationales plutôt que par les armes.","war",true],
+["Les grandes entreprises privées sont généralement plus efficaces que les entreprises publiques.","econ"],
+["Les secteurs essentiels devraient appartenir collectivement à la population.","econ",true],
+["La concurrence est un moteur important de l’innovation et de la prospérité.","econ"],
+["Les travailleurs devraient pouvoir contrôler démocratiquement leur entreprise.","econ",true],
+["La propriété privée des moyens de production devrait rester le fondement de l’économie.","econ"],
+["Les écarts de richesse sont acceptables s’ils résultent d’une activité économique libre.","econ"],
+["Les ressources stratégiques devraient être détenues ou dirigées par la collectivité.","econ",true],
+["Une économie planifiée peut être préférable au marché pour satisfaire les besoins fondamentaux.","econ",true],
+["L’entrepreneuriat privé doit être encouragé même si les résultats sont inégaux.","econ"],
+["La production devrait viser d’abord les besoins collectifs plutôt que le profit privé.","econ",true],
+["Les décisions nationales devraient primer sur les règles des organisations supranationales.","nation"],
+["La coopération mondiale est plus importante que la souveraineté absolue des États.","nation",true],
+["L’immigration et le commerce devraient être décidés en tenant compte des intérêts nationaux.","nation"],
+["Les problèmes mondiaux exigent des institutions internationales plus puissantes.","nation",true],
+["Un pays devrait préserver sa culture et ses traditions nationales.","nation"],
+["Les frontières devraient avoir moins d’importance dans un monde interdépendant.","nation",true],
+["Les traités internationaux ne devraient pas pouvoir contredire la volonté démocratique nationale.","nation"],
+["La citoyenneté mondiale devrait compter davantage que l’identité nationale.","nation",true],
+["Un pays doit garder la maîtrise de ses choix économiques et stratégiques.","nation"],
+["Les États devraient partager davantage leur souveraineté pour résoudre les crises mondiales.","nation",true],
+["Un monarque héréditaire peut incarner la continuité historique du pays.","regime","royal"],
+["Les dirigeants devraient être choisis lors d’élections libres et compétitives.","regime","dem"],
+["En période de crise, un dirigeant devrait pouvoir concentrer les pouvoirs sans contre-pouvoirs importants.","regime","auth"],
+["Les tribunaux et les médias doivent pouvoir critiquer librement le gouvernement.","regime","dem"],
+["Une monarchie constitutionnelle peut être une bonne forme de démocratie.","regime","royal"],
+["L’unité nationale justifie parfois de limiter durablement l’opposition politique.","regime","auth"],
+["Les citoyens devraient pouvoir remplacer pacifiquement leurs dirigeants.","regime","dem"],
+["Un pouvoir exécutif fort devrait pouvoir neutraliser les institutions qui le bloquent.","regime","auth"],
+["La fonction de chef d’État gagnerait à être héréditaire plutôt qu’électorale.","regime","royal"],
+["Le pluralisme politique est plus important que l’unité imposée par le pouvoir.","regime","dem"],
+["L’État doit réglementer les entreprises pour protéger les consommateurs et les salariés.","state"],
+["Les marchés fonctionnent mieux quand les règles publiques sont limitées.","state",true],
+["Les services essentiels devraient être accessibles à tous grâce à l’action publique.","state"],
+["Les impôts devraient être réduits même si certains services publics diminuent.","state",true],
+["L’État doit intervenir pour réduire les inégalités économiques.","state"],
+["Les individus et les entreprises devraient être libres de conclure des accords sans intervention excessive.","state",true],
+["Le logement, l’énergie et la santé nécessitent une régulation publique forte.","state"],
+["La plupart des décisions économiques devraient être laissées aux consommateurs et producteurs.","state",true],
+["Les pouvoirs publics doivent protéger les secteurs stratégiques contre les crises du marché.","state"],
+["Les réglementations sont souvent un obstacle plus qu’une solution aux problèmes économiques.","state",true],
+["Les croyances théistes peuvent contribuer positivement à la vie publique.","faith"],
+["Les institutions publiques devraient rester strictement neutres envers toutes les religions.","faith",true],
+["Les traditions religieuses méritent une place visible dans la société.","faith"],
+["Les décisions politiques ne devraient jamais être justifiées par une révélation religieuse.","faith",true],
+["La religion peut offrir des repères moraux utiles à la communauté.","faith"],
+["L’athéisme devrait être aussi représenté publiquement que les croyances religieuses.","faith",true],
+["Les responsables politiques peuvent s’inspirer ouvertement de leur foi.","faith"],
+["La loi civile doit primer sur toute règle religieuse dans l’espace public.","faith",true],
+["La spiritualité et la religion devraient être considérées comme des sujets strictement privés.","faith",true],
+["Une société peut préserver sa cohésion en reconnaissant son héritage religieux.","faith"],
+["L’idée de plusieurs divinités peut être aussi cohérente que celle d’un dieu unique.","theology"],
+["Je trouve plus convaincante l’idée d’une divinité unique que celle de plusieurs divinités.","theology",true],
+["Les traditions polythéistes méritent d’être prises au sérieux comme systèmes spirituels.","theology"],
+["Le monothéisme propose une explication du divin qui me paraît plus convaincante.","theology",true],
+["Il est possible que plusieurs divinités représentent différentes facettes du sacré.","theology"],
+["L’idée d’un dieu unique me semble plus simple et plus plausible que celle de plusieurs dieux.","theology",true],
+["Les mythologies polythéistes peuvent porter une sagesse philosophique valable.","theology"],
+["La vérité spirituelle, si elle existe, doit être une et universelle.","theology",true],
+["Aucune tradition religieuse ne devrait être tenue pour supérieure par principe.","theology"],
+["Je préfère les visions spirituelles qui reconnaissent plusieurs puissances divines.","theology"],
+["Le progrès scientifique et technique devrait être une priorité nationale.","future"],
+["Les modes de vie anciens contiennent des leçons qu’il faut préserver face à la nouveauté.","future",true],
+["L’intelligence artificielle et l’automatisation devraient transformer profondément la société.","future"],
+["Il vaut mieux conserver des méthodes éprouvées que changer pour le simple plaisir d’innover.","future",true],
+["L’exploration spatiale mérite des investissements publics importants.","future"],
+["Une société devrait ralentir le changement technologique pour préserver ses repères.","future",true],
+["Les nouvelles technologies peuvent aider à résoudre les grandes crises humaines.","future"],
+["Les innovations qui menacent les traditions devraient être limitées.","future",true],
+["L’humanité devrait se donner pour objectif de dépasser ses limites biologiques et techniques.","future"],
+["Le progrès n’est pas toujours souhaitable si l’on perd des savoir-faire anciens.","future",true],
+["Les lois devraient évoluer pour reconnaître davantage de modes de vie différents.","social"],
+["Les traditions familiales devraient rester la norme sociale privilégiée.","social",true],
+["Chacun devrait pouvoir définir son identité et son mode de vie tant qu’il ne nuit pas aux autres.","social"],
+["Les changements sociaux rapides fragilisent parfois les liens entre générations.","social",true],
+["L’égalité des droits doit être étendue même si cela bouscule des habitudes anciennes.","social"],
+["Les coutumes héritées méritent d’être conservées sauf raison forte de les abandonner.","social",true],
+["L’école devrait apprendre à remettre en question les normes sociales établies.","social"],
+["La société devrait encourager davantage le respect des rôles et traditions historiques.","social",true],
+["Les droits individuels doivent primer sur les conventions sociales majoritaires.","social"],
+["Les réformes des mœurs devraient avancer lentement pour maintenir la cohésion.","social",true],
+["Une rupture radicale peut être nécessaire lorsque les institutions sont profondément injustes.","change"],
+["Les changements durables sont plus solides lorsqu’ils passent par des réformes graduelles.","change",true],
+["Si un système politique est bloqué, une révolution peut devenir légitime.","change"],
+["Il vaut mieux améliorer les institutions existantes que les renverser.","change",true],
+["Les structures économiques et politiques doivent parfois être refondées de fond en comble.","change"],
+["Les compromis successifs sont préférables aux bouleversements soudains.","change",true],
+["Une mobilisation populaire peut légitimement remplacer un régime qui refuse toute réforme.","change"],
+["Les réformes progressives permettent de corriger les injustices sans chaos inutile.","change",true],
+["Les règles constitutionnelles ne doivent pas empêcher une transformation profonde de la société.","change"],
+["La stabilité institutionnelle mérite souvent d’être privilégiée à une rupture politique.","change",true]
+];
+
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function startTest(){renderQuestions();showScreen('test');}
+function renderQuestions(){
+ const host=document.getElementById('questions'); if(host.dataset.ready)return;
+ let last='';
+ questions.forEach((q,i)=>{
+  const ax=axes.find(a=>a.id===q[1]);
+  if(ax.name!==last){host.insertAdjacentHTML('beforeend',`<div class="section-label">${ax.name}</div><p class="muted small">${ax.desc}</p>`);last=ax.name;}
+  const answers=SCALE.map(s=>`<label class="answer"><input type="radio" name="q${i}" value="${s.v}" onchange="updateProgress()"><span>${s.label}</span></label>`).join('');
+  host.insertAdjacentHTML('beforeend',`<div class="question" id="question-${i}"><p class="q-title"><span class="q-num">${String(i+1).padStart(2,'0')}.</span>${q[0]}</p><div class="answers">${answers}</div></div>`);
+ });
+ host.dataset.ready='1';
+}
+function updateProgress(){const n=questions.filter((q,i)=>document.querySelector(`input[name="q${i}"]:checked`)).length;document.getElementById('answeredCount').textContent=`${n} / 100 répondues`;document.getElementById('stickyCount').textContent=`${n}/100`;document.getElementById('progress').style.width=`${n}%`;document.getElementById('formError').style.display='none';}
+function calculateResults(){
+ const missing=questions.findIndex((q,i)=>!document.querySelector(`input[name="q${i}"]:checked`));
+ if(missing!==-1){document.getElementById('formError').style.display='block';document.getElementById(`question-${missing}`).scrollIntoView({behavior:'smooth',block:'center'});return;}
+ const answers=questions.map((q,i)=>Number(document.querySelector(`input[name="q${i}"]:checked`).value));
+ const scores={};
+ axes.forEach(a=>scores[a.id]={sum:0,n:0});
+ questions.forEach((q,i)=>{if(q[1]==='regime'){scores.regime.n++;scores.regime[q[2]]=(scores.regime[q[2]]||0)+Math.max(0,answers[i]);scores.regime.sum+=answers[i];}else{let v=q[2]===true?-answers[i]:answers[i];scores[q[1]].sum+=v;scores[q[1]].n++;}});
+ // For paired axes: left/right percentages use normalized mean, 0 means 50/50.
+ const pct={};axes.forEach(a=>{if(a.three){let r=scores.regime;let total=(r.royal||0)+(r.dem||0)+(r.auth||0);if(total===0){pct.regime={royal:33.3,dem:33.3,auth:33.4};}else pct.regime={royal:100*(r.royal||0)/total,dem:100*(r.dem||0)/total,auth:100*(r.auth||0)/total};}else{let s=scores[a.id],max=s.n*2;let right=50+(s.sum/(max||1))*50;right=Math.max(0,Math.min(100,right));pct[a.id]={left:100-right,right:right};}});
+ renderResults(pct,scores);
+ showScreen('results');
+}
+function renderResults(pct,scores){
+ const host=document.getElementById('axisResults');host.innerHTML='';
+ axes.forEach(a=>{
+  if(a.three){const p=pct.regime;host.insertAdjacentHTML('beforeend',`<div class="axis"><div class="axis-head"><span>${a.name}</span><span class="score">3 pôles</span></div><div class="axis-track"><div class="axis-left" style="width:${p.royal}%"></div><div class="axis-mid" style="width:${p.dem}%"></div><div class="axis-right" style="width:${p.auth}%"></div></div><div class="axis-sub"><span>Royalisme ${p.royal.toFixed(0)}%</span><span>Démocratie ${p.dem.toFixed(0)}%</span><span>Autoritarisme ${p.auth.toFixed(0)}%</span></div></div>`);}
+  else{const p=pct[a.id];host.insertAdjacentHTML('beforeend',`<div class="axis"><div class="axis-head"><span>${a.name}</span><span class="score">${p.right.toFixed(0)}%</span></div><div class="axis-track"><div class="axis-left" style="width:${p.left}%"></div><div class="axis-right" style="width:${p.right}%"></div></div><div class="axis-sub"><span>${a.left} ${p.left.toFixed(0)}%</span><span>${a.right} ${p.right.toFixed(0)}%</span></div></div>`);}
+ });
+ const strongest=axes.filter(a=>!a.three).map(a=>({name:a.name,p:pct[a.id],side:pct[a.id].right>=50?a.right:a.left,delta:Math.abs(pct[a.id].right-50)})).sort((a,b)=>b.delta-a.delta).slice(0,3);
+ document.getElementById('summary').innerHTML=`<p>Les trois tendances les plus marquées dans tes réponses :</p><ol>${strongest.map(x=>`<li><strong>${x.side}</strong> — ${x.name} <span class="score">(${Math.max(x.p.left,x.p.right).toFixed(0)}%)</span></li>`).join('')}</ol><p class="muted small">Un score élevé indique une orientation dans cet axe seulement ; il ne résume pas l’ensemble de tes opinions.</p>`;
+ const candidates=buildCandidates(pct);document.getElementById('movementText').textContent='Les rapprochements ci-dessous sont volontairement prudents : ils indiquent des familles d’idées qui peuvent partager certaines tendances, sans présumer de ton accord avec toutes leurs positions.';
+ document.getElementById('movements').innerHTML=candidates.map(c=>`<div class="mini" style="margin:10px 0"><h3>${c.name}</h3><p>${c.why}</p><p class="small muted">Limite : ${c.limit}</p></div>`).join('');
+ const people=choosePeople(pct);document.getElementById('person20').innerHTML=`<h4>${people.p20.name}</h4><p>${people.p20.bio}</p><p class="small muted"><strong>Point de comparaison :</strong> ${people.p20.why}</p><p class="small muted"><strong>Limite :</strong> aucune personnalité ne correspond parfaitement à un profil individuel.</p>`;
+ document.getElementById('person21').innerHTML=`<h4>${people.p21.name}</h4><p>${people.p21.bio}</p><p class="small muted"><strong>Point de comparaison :</strong> ${people.p21.why}</p><p class="small muted"><strong>Limite :</strong> le choix dépend de quelques dimensions et ne vaut pas approbation générale.</p>`;
+ drawFlag(pct);document.getElementById('flagText').textContent=flagDescription(pct);
+}
+function right(pct,id){return pct[id]?.right??50}
+function buildCandidates(p){
+ const econ=right(p,'econ'),nation=right(p,'nation'),state=right(p,'state'),social=right(p,'social'),change=right(p,'change'),future=right(p,'future'),reg=p.regime;
+ let list=[];
+ if(econ<42&&state>55)list.push({name:"Socialisme démocratique / gauche économique",why:"Tes réponses semblent privilégier la propriété collective ou la réduction des inégalités et un rôle actif de l’État.",limit:"Les traditions socialistes diffèrent fortement sur les libertés, le marché et la démocratie."});
+ if(econ>58&&state<48)list.push({name:"Libéralisme économique",why:"Tu sembles valoriser la propriété privée, la concurrence et une intervention publique limitée.",limit:"Le libéralisme économique peut coexister avec des positions sociales très diverses."});
+ if(nation>60)list.push({name:"Souverainisme / national-conservatisme (selon les autres axes)",why:"Tu accordes une importance relative à la souveraineté nationale et à la maîtrise des décisions collectives.",limit:"Le souverainisme ne signifie pas automatiquement hostilité aux étrangers ni autoritarisme."});
+ if(nation<40)list.push({name:"Internationalisme / cosmopolitisme",why:"Tu sembles donner plus de poids à la coopération mondiale et aux institutions communes.",limit:"Ces familles vont du libéralisme international au socialisme internationaliste."});
+ if(social>60&&future>55)list.push({name:"Progressisme réformateur",why:"Tu combines une ouverture au changement social avec une préférence pour l’innovation.",limit:"Le progressisme ne détermine pas à lui seul tes choix économiques ou institutionnels."});
+ if(social<40)list.push({name:"Traditionalisme social",why:"Tu sembles accorder une place importante aux coutumes et à la continuité des normes sociales.",limit:"Le traditionalisme peut s’associer à des systèmes économiques et politiques très différents."});
+ if(change>60)list.push({name:"Courants de rupture / transformation radicale",why:"Tes réponses favorisent davantage la transformation profonde des institutions que les ajustements graduels.",limit:"La révolution peut désigner des projets démocratiques ou autoritaires très différents."});
+ if(reg.dem>45)list.push({name:"Démocratisme pluraliste",why:"Le pôle démocratique ressort dans tes réponses sur les institutions et les contre-pouvoirs.",limit:"Une préférence démocratique ne suffit pas à situer toutes tes idées politiques."});
+ if(reg.royal>45)list.push({name:"Monarchisme / royalisme",why:"Tes réponses accordent une place notable à la continuité incarnée par une fonction héréditaire.",limit:"Le royalisme inclut des monarchies constitutionnelles démocratiques et des conceptions plus autoritaires."});
+ if(reg.auth>45)list.push({name:"Préférence pour un exécutif fortement centralisé",why:"Tes réponses donnent une place importante à la concentration du pouvoir en période de crise.",limit:"Cela ne permet pas, à lui seul, de conclure à une adhésion au totalitarisme ; libertés et contre-pouvoirs doivent être examinés séparément."});
+ if(!list.length)list.push({name:"Profil mixte / pluraliste",why:"Tes scores sont répartis entre plusieurs tendances et ne pointent pas vers une seule famille idéologique.",limit:"Un profil mixte est fréquent et peut refléter des arbitrages réfléchis."});
+ return list.slice(0,5);
+}
+function choosePeople(p){
+ const econ=right(p,'econ'),nation=right(p,'nation'),social=right(p,'social'),state=right(p,'state'),change=right(p,'change'),future=right(p,'future');
+ let p20,p21;
+ if(econ<42&&state>55){p20={name:"Jean Jaurès (1859–1914)",bio:"Socialiste français, parlementaire et défenseur de la République ; il s’opposa à la guerre et fut assassiné en 1914.",why:"La place accordée à la justice sociale et à l’action collective peut rappeler une partie de son engagement."};}
+ else if(nation>62){p20={name:"Charles de Gaulle (1890–1970)",bio:"Chef de la France libre, fondateur de la Ve République et défenseur d’une forte indépendance nationale.",why:"La priorité donnée à la souveraineté et à l’autonomie stratégique peut faire écho à sa pensée d’État."};}
+ else if(social<42){p20={name:"Edmund Burke (1729–1797; influence au XXe siècle)",bio:"Penseur conservateur dont les écrits ont fortement marqué le conservatisme moderne.",why:"L’importance accordée aux traditions et à l’évolution prudente peut rappeler le conservatisme burkéen."};}
+ else{p20={name:"Albert Camus (1913–1960)",bio:"Écrivain et penseur engagé contre le totalitarisme, critique de la violence politique et défenseur de la mesure.",why:"Une recherche d’équilibre entre justice, liberté et refus des violences politiques peut rappeler certains de ses principes."};}
+ if(econ<42&&social>55){p21={name:"Bernie Sanders (né en 1941; acteur politique du XXIe siècle)",bio:"Sénateur américain associé au socialisme démocratique et à l’extension des protections sociales.",why:"Le rapprochement porte surtout sur l’économie redistributive et les services publics."};}
+ else if(nation>62&&social<45){p21={name:"Viktor Orbán (né en 1963)",bio:"Premier ministre hongrois, associé au national-conservatisme et à une conception illibérale du pouvoir.",why:"Le rapprochement éventuel concerne la souveraineté et le conservatisme, pas nécessairement l’ensemble de son programme.",limit:"Ses politiques et sa conception des contre-pouvoirs sont controversées."};}
+ else if(econ>60&&state<45){p21={name:"Javier Milei (né en 1970)",bio:"Président argentin associé au libertarianisme économique et à une forte réduction du rôle de l’État.",why:"Le point commun possible est la préférence pour le marché et la limitation de l’intervention publique."};}
+ else if(social>60&&future>55){p21={name:"Alexandria Ocasio-Cortez (née en 1989)",bio:"Élue américaine progressiste, connue pour ses positions sur la justice sociale et le climat.",why:"Le rapprochement porte sur l’évolution sociale et certaines politiques publiques, non sur toutes les positions."};}
+ else{p21={name:"Emmanuel Macron (né en 1977)",bio:"Président français associé à un positionnement centriste, pro-européen et réformateur, avec des politiques économiques libérales.",why:"Cette comparaison sert de repère centriste possible lorsque les axes ne dessinent pas une famille très marquée."};}
+ return {p20,p21};
+}
+function flagDescription(p){const nation=right(p,'nation'),social=right(p,'social'),econ=right(p,'econ'),future=right(p,'future');let colors=nation>60?'bleu profond = souveraineté et continuité':nation<40?'bleu-vert = coopération et ouverture':'bleu nuit = équilibre entre ouverture et autonomie';let motif=social>60?'étoile ascendante = évolution sociale':social<40?'couronne de feuilles = héritage et tradition':'cercle central = cohésion et pluralité';let base=econ<42?'bande claire = solidarité économique':econ>58?'bande dorée = initiative et autonomie':'bande argentée = compromis économique';return `${colors}. ${motif}. ${base}. ${future>60?'Les lignes rayonnantes évoquent l’innovation et l’avenir.':future<40?'Les lignes horizontales évoquent la continuité historique.':'Les lignes équilibrées symbolisent le lien entre héritage et avenir.'}`;}
+function drawFlag(p){
+ const svg=document.getElementById('flag');const nation=right(p,'nation'),social=right(p,'social'),econ=right(p,'econ'),future=right(p,'future');
+ const bg=nation>60?'#173a68':nation<40?'#12635c':'#24334d';const accent=econ<42?'#e6e9d5':econ>58?'#d8ad58':'#b8c7d9';const light=social>60?'#7de2ca':social<40?'#c9b47a':'#8da7ff';
+ let motif=social>60?'<path d="M300 95 L318 135 L362 139 L329 168 L339 212 L300 190 L261 212 L271 168 L238 139 L282 135 Z" fill="'+light+'" stroke="#fff" stroke-opacity=".65" stroke-width="3"/>':social<40?'<path d="M245 191 Q220 145 255 119 Q270 157 300 165 Q330 157 345 119 Q380 145 355 191 Q330 218 300 218 Q270 218 245 191Z" fill="'+light+'" stroke="#fff" stroke-opacity=".55" stroke-width="3"/><path d="M300 214 V130" stroke="'+bg+'" stroke-width="5"/>':'<circle cx="300" cy="160" r="58" fill="none" stroke="'+light+'" stroke-width="10"/><circle cx="300" cy="160" r="34" fill="'+light+'"/>';
+ let rays='';if(future>60){for(let i=0;i<16;i++){let a=i*Math.PI/8;let x1=300+Math.cos(a)*95,y1=160+Math.sin(a)*58,x2=300+Math.cos(a)*132,y2=160+Math.sin(a)*85;rays+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${accent}" stroke-width="3" opacity=".85"/>`;}}else if(future<40){rays='<path d="M40 75 H560 M40 285 H560" stroke="'+accent+'" stroke-width="5" opacity=".8"/>';}else{rays='<path d="M55 65 H545 M55 295 H545" stroke="'+accent+'" stroke-width="3" opacity=".7"/>';}
+ svg.innerHTML=`<rect width="600" height="360" fill="${bg}"/><path d="M0 0 H600 V88 Q300 132 0 88Z" fill="${accent}" opacity=".95"/><path d="M0 272 Q300 228 600 272 V360 H0Z" fill="${accent}" opacity=".95"/>${rays}<circle cx="300" cy="160" r="91" fill="${bg}" stroke="${accent}" stroke-width="5"/>${motif}<path d="M30 180 H205 M395 180 H570" stroke="${light}" stroke-width="4" opacity=".8"/>`;
+}
+function downloadFlag(){const svg=document.getElementById('flag').outerHTML;const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='drapeau-polis.svg';a.click();URL.revokeObjectURL(url);}
+function copySummary(){const txt=[...document.querySelectorAll('#axisResults .axis')].map(x=>x.innerText.replace(/\n/g,' — ')).join('\n')+'\n\n'+document.getElementById('movementText').textContent+'\n'+[...document.querySelectorAll('#movements h3')].map(x=>x.innerText).join('\n');if(navigator.clipboard)navigator.clipboard.writeText(txt).then(()=>alert('Synthèse copiée.')).catch(()=>alert(txt));else alert(txt);}
+function restart(){document.getElementById('quizForm').reset();document.getElementById('questions').dataset.ready='';document.getElementById('questions').innerHTML='';updateProgress();showScreen('home');}
+</script>
+</body>
+</html>
